@@ -75,7 +75,7 @@ default['atoms']['atoms-server']['db_sslmode'] = nil
 default['atoms']['atoms-server']['db_sslrootcert'] = nil
 
 default['atoms']['atoms-server']['inst_verification'] = false
-default['atoms']['atoms-server']['inst_verification_class'] = "org.jboss.aerogear.atoms.service.sms.ClickatellSMSSender"
+default['atoms']['atoms-server']['inst_verification_class'] = "org.jboss.aerogear.unifiedpush.service.sms.ClickatellSMSSender"
 default['atoms']['atoms-server']['inst_verification_properties'] = []
 # Example - Additinal properties will be passed into verification class`
 # ['aerogear.config.sms.sender.clickatell.api_id=','aerogear.config.sms.sender.clickatell.username=','aerogear.config.sms.sender.clickatell.password=','aerogear.config.sms.sender.clickatell.encoding=UTF-8','aerogear.config.sms.sender.clickatell.template={0}']
