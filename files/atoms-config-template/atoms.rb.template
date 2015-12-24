@@ -1,0 +1,145 @@
+# Url on which Atoms will be reachable.
+external_url 'GENERATED_EXTERNAL_URL'
+
+# Note: configuration settings below are optional.
+## Uncomment and change the value.
+############################
+# atoms.yml configuration #
+############################
+
+####
+# The Atoms User that services run as
+####
+## The username for the atoms services user
+# user['username'] = "atoms"
+# user['group'] = "atoms"
+# user['uid'] = nil
+# user['gid'] = nil
+## The shell for the atoms services user
+# user['shell'] = "/bin/sh"
+## The home directory for the atoms services user
+# user['home'] = "/var/opt/atoms"
+
+####
+# Atoms Applicaiton Server 
+####
+# atoms_server['enable'] = true
+# atoms_server['ha'] = false
+# atoms_server['dir'] = "/var/opt/atoms/atoms-server"
+# atoms_server['log_directory'] = "/var/log/atoms/atoms-server"
+# atoms_server['environment'] = 'production'
+#
+# atoms_server['documents_directory'] = "/var/opt/atoms/atoms-server/documents"
+# atoms_server['uploads_directory'] = "/var/opt/atoms/atoms-server/uploads"
+# atoms_server['server_host'] = node['fqdn']
+# atoms_server['server_port'] = 80
+# atoms_server['server_https'] = false
+# atoms_server['time_zone'] = nil
+#
+# atoms_server['backup_path'] = "/var/opt/atoms/atoms-server/backups"
+# atoms_server['db_adapter'] = "postgresql"
+# atoms_server['db_encoding'] = "unicode"
+# atoms_server['db_database'] = "atoms_server"
+# atoms-server['db_keycloak_database'] = "keycloak_server"
+# atoms_server['db_pool'] = 10
+## db_username, db_host, db_port oveeride PostgreSQL properties [sql_user, listen_address, port]
+# atoms_server['db_username'] = "atoms_server"
+# atoms_server['db_password'] = nil
+## Path to postgresql socket directory
+# atoms_server['db_host'] = "/var/opt/atoms/postgresql"
+# atoms_server['db_port'] = 5432
+# atoms_server['db_socket'] = nil
+# atoms_server['db_sslmode'] = nil
+# atoms_server['db_sslrootcert'] = nil
+#
+# atoms_server['inst_verification'] = false
+# atoms_server['inst_verification_class'] = "org.jboss.aerogear.atoms.service.sms.ClickatellSMSSender"
+# atoms_server['inst_verification_properties'] = []
+# Example - Additinal properties will be passed into verification class`
+# ['aerogear.config.sms.sender.clickatell.api_id=','aerogear.config.sms.sender.clickatell.username=','aerogear.config.sms.sender.clickatell.password=','aerogear.config.sms.sender.clickatell.encoding=UTF-8', 'aerogear.config.sms.sender.clickatell.template={0}']
+
+###
+# PostgreSQL
+###
+# postgresql['enable'] = true
+# postgresql['ha'] = false
+# postgresql['dir'] = "/var/opt/atoms/postgresql"
+# postgresql['data_dir'] = "/var/opt/atoms/postgresql/data"
+# postgresql['log_directory'] = "/var/log/atoms/postgresql"
+# postgresql['unix_socket_directory'] = "/var/opt/atoms/postgresql"
+# postgresql['username'] = "atoms-pgs"
+# postgresql['uid'] = nil
+# postgresql['gid'] = nil
+# postgresql['shell'] = "/bin/sh"
+# postgresql['home'] = "/var/opt/atoms/postgresql"
+## Postgres User's Environment Path
+## defaults to /opt/atoms/embedded/bin:/opt/atoms/bin/$PATH. The install-dir path is set at build time
+# postgresql['user_path'] = "#{node['package']['install-dir']}/embedded/bin:#{node['package']['install-dir']}/bin:$PATH"
+# postgresql['bin_dir'] = "#{node['package']['install-dir']}/embedded/bin"
+# postgresql['sql_user'] = "atoms_server"
+# postgresql['port'] = 5432
+# postgresql['listen_address'] = 'localhost'
+# postgresql['max_connections'] = 200
+# postgresql['md5_auth_cidr_addresses'] = []
+# postgresql['trust_auth_cidr_addresses'] = ['localhost']
+# postgresql['shmmax'] = kernel['machine'] =~ /x86_64/ ? 17179869184 : 4294967295
+# postgresql['shmall'] = kernel['machine'] =~ /x86_64/ ? 4194304 : 1048575
+# postgresql['shared_buffers'] = "2048MB"
+#
+# postgresql['work_mem'] = "8MB"
+# postgresql['effective_cache_size'] = "#{(node['memory']['total'].to_i / 2) / (1024)}MB"
+# postgresql['checkpoint_segments'] = 10
+# postgresql['checkpoint_timeout'] = "5min"
+# postgresql['checkpoint_completion_target'] = 0.9
+# postgresql['checkpoint_warning'] = "30s"
+
+
+####
+# Web server
+####
+## see: https://github.com/atomsd/omnibus-atoms/blob/master/doc/settings/nginx.md#using-a-non-bundled-web-server
+## When bundled nginx is disabled we need to add the external webserver user to the Atoms webserver group.
+# web_server['username'] = 'atoms-www'
+# web_server['group'] = 'atoms-www'
+# web_server['uid'] = nil
+# web_server['gid'] = nil
+# web_server['shell'] = '/bin/false'
+# web_server['home'] = '/var/opt/atoms/nginx'
+# web_server['external_users'] = []
+
+
+####
+#NGINX
+####
+# nginx['enable'] = true
+# nginx['ha'] = false
+# nginx['dir'] = "/var/opt/atoms/nginx"
+# nginx['log_directory'] = "/var/log/atoms/nginx"
+# nginx['worker_processes'] = node['cpu']['total'].to_i
+# nginx['worker_connections'] = 10240
+# nginx['sendfile'] = 'on'
+# nginx['tcp_nopush'] = 'on'
+# nginx['tcp_nodelay'] = 'on'
+# nginx['gzip'] = "on"
+# nginx['gzip_http_version'] = "1.0"
+# nginx['gzip_comp_level'] = "2"
+# nginx['gzip_proxied'] = "any"
+# nginx['gzip_types'] = [ "text/plain", "text/css", "application/x-javascript", "text/xml", "application/xml", "application/xml+rss", "text/javascript", "application/json" ]
+# nginx['keepalive_timeout'] = 65
+# nginx['client_max_body_size'] = '250m'
+# nginx['cache_max_size'] = '5000m'
+# nginx['redirect_http_to_https'] = false
+# nginx['redirect_http_to_https_port'] = 80
+# nginx['ssl_certificate'] = "/etc/atoms/ssl/#{node['fqdn']}.crt"
+# nginx['ssl_certificate_key'] = "/etc/atoms/ssl/#{node['fqdn']}.key"
+# nginx['ssl_ciphers'] = "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4"
+# nginx['ssl_prefer_server_ciphers'] = "on"
+# nginx['ssl_protocols'] = "TLSv1 TLSv1.1 TLSv1.2" # recommended by https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html & https://cipherli.st/
+# nginx['ssl_session_cache'] = "builtin:1000  shared:SSL:10m" # recommended in http://nginx.org/en/docs/http/ngx_http_ssl_module.html
+# nginx['ssl_session_timeout'] = "5m" # default according to http://nginx.org/en/docs/http/ngx_http_ssl_module.html
+# nginx['ssl_dhparam'] = nil # Path to dhparam.pem
+# nginx['listen_addresses'] = ['*']
+# nginx['listen_port'] = nil # override only if you have a reverse proxy
+# nginx['listen_https'] = nil # override only if your reverse proxy internally communicates over HTTP
+# nginx['custom_atoms_server_config'] = nil
+# nginx['custom_nginx_config'] = nil

@@ -1,0 +1,4 @@
+#!/bin/sh
+exec 2>&1
+cd <%= node['atoms']['nginx']['dir'] %>
+exec chpst -P /opt/atoms/embedded/sbin/nginx -p <%= node['atoms']['nginx']['dir'] %>

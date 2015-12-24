@@ -1,0 +1,4 @@
+#!/bin/sh
+exec 2>&1
+cd <%= node['atoms']['atoms-server']['dir'] %>
+exec chpst -P -U <%= node['atoms']['user']['username'] %> -u <%= node['atoms']['user']['username'] %> bin/standalone.sh -c standalone-full.xml

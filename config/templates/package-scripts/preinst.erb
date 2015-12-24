@@ -1,0 +1,48 @@
+#!/bin/sh
+# atoms pre-install script
+
+DEST_DIR=<%= install_dir %>
+
+skip_migrations_file=/etc/atoms/skip-auto-migrations
+
+main() {
+  if [ -e "${skip_migrations_file}" ] ; then
+    # The user wants us to do nothing
+    return
+  fi
+
+  if [ -d ${DEST_DIR}/service/atoms ] ; then
+    notify "TODO - Backing up Atoms Server SQL database (excluding configuration, uploads)"
+    #if ! ${DEST_DIR}/bin/atoms-backup.sh ; then
+    #  notify
+    #  notify "Backup failed! If you want to skip this backup, run the following command and"
+    #  notify "try again:"
+    #  notify
+    #  notify "  sudo touch ${skip_migrations_file}"
+    #  notify
+    #  exit 1
+    #fi
+  fi
+}
+
+notify() {
+  echo "atoms preinstall: $1"
+}
+
+if [ -n "${UNIFIEDPUSH_DEBUG}" ] ; then
+  notify "debug: arguments: $@"
+fi
+
+case "$1" in
+  2)
+    # Looks like an RPM upgrade
+    main
+    ;;
+  upgrade)
+    # Looks like a DEB upgrade
+    main
+    ;;
+  *)
+    # This is not an upgrade, nothing to do.
+    ;;
+esac
