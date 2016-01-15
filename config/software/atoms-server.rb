@@ -16,7 +16,7 @@
 #
 
 name "atoms"
-default_version "1.1.x"
+default_version "1.1.1-SNAPSHOT"
 
 dependency "ruby"
 dependency "bundler"
@@ -24,18 +24,22 @@ dependency "rsync"
 dependency "postgresql"
 dependency "wildfly"
 
-source :git => "https://github.com/atomsd/atoms.git"
+version "1.1.1-SNAPSHOT" do
+  source md5: "c902708acd1b309596d5ef1fb44c5651"
+end
 
-relative_path "atoms-server"
-build_dir = "#{project_dir}"
+repo_home = if "#{version}".end_with?("SNAPSHOT") then "libs-snapshot-local" else "libs-release-local" end
+
+source url: "http://ci.atomsd.org/artifactory/#{repo_home}/org/jboss/aerogear/unifiedpush/unifiedpush-package/#{version}/unifiedpush-package-#{version}.tar.gz"
+
+relative_path "unifiedpush-package"
 
 build do
-  command "mvn clean install"
-
   command "mkdir -p #{install_dir}/embedded/apps/atoms"
+  sync "#{project_dir}/", "#{install_dir}/embedded/apps/atoms/"
 
-  copy "#{project_dir}/servers/ups-wildfly/target/unifiedpush-server.war",      "#{install_dir}/embedded/apps/atoms/atoms-server.war"
-  copy "#{project_dir}/servers/auth-server/target/auth-server.war",  "#{install_dir}/embedded/apps/atoms/auth-server.war"
+  link "#{install_dir}/embedded/apps/atoms/unifiedpush-server-wildfly-#{version}.war", "#{install_dir}/embedded/apps/atoms/atoms-server.war"
+  link "#{install_dir}/embedded/apps/atoms/unifiedpush-auth-server-#{version}.war", "#{install_dir}/embedded/apps/atoms/auth-server.war"
 
   erb source: "version.yml.erb",
       dest: "#{install_dir}/embedded/apps/atoms/version.yml",
@@ -45,6 +49,6 @@ end
 
 # Build initdb project to allow JPA based schema creation.
 build do
-  command "mvn clean install -f databases/initdb/pom.xml"
-  command "tar xzf #{project_dir}/databases/initdb/target/unifiedpush-initdb.tar.gz --strip-components 1 -C #{install_dir}/embedded/apps/atoms/"
+  command "mkdir -p #{install_dir}/embedded/apps/atoms/initdb"
+  command "tar -xzf #{project_dir}/unifiedpush-initdb-#{version}.tar.gz --strip-components 1 -C #{install_dir}/embedded/apps/atoms/initdb"
 end
