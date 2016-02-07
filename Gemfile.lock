@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/atomsd/omnibus-software.git
-  revision: 2c5a0795afb0e580704dfcf7f9ca8b091c5ab9f0
+  revision: b0a447499865fc670bef0dea006449c94f678d30
   branch: 1.1.x
   specs:
     omnibus-software (4.0.0)
