@@ -72,6 +72,14 @@ sysctl "kernel.shmall" do
   value node['atoms']['postgresql']['shmall']
 end
 
+sem = "#{node['atoms']['postgresql']['semmsl']} "
+sem += "#{node['atoms']['postgresql']['semmns']} "
+sem += "#{node['atoms']['postgresql']['semopm']} "
+sem += "#{node['atoms']['postgresql']['semmni']}"
+sysctl "kernel.sem" do
+  value sem
+end
+
 execute "/opt/atoms/embedded/bin/initdb -D #{postgresql_data_dir} -E UTF8" do
   user postgresql_user
   not_if { File.exists?(File.join(postgresql_data_dir, "PG_VERSION")) }
