@@ -16,13 +16,17 @@
 #
 
 name "atoms"
-default_version "1.1.1-SNAPSHOT"
+default_version "1.1.1.FINAL"
 
 dependency "ruby"
 dependency "bundler"
 dependency "rsync"
 dependency "postgresql"
 dependency "wildfly"
+
+version "1.1.1.FINAL" do
+  source md5: "0ea601c764bc9aa81a787aff8b01684e"
+end
 
 version "1.1.1-SNAPSHOT" do
   source md5: "e7cd8049a5b45af12c5690561d2ea0a8"
