@@ -64,35 +64,12 @@ PATH=#{node['atoms']['postgresql']['user_path']}
 EOH
 end
 
-if File.directory?("/etc/sysctl.d") && File.exists?("/etc/init.d/procps")
-  # smells like ubuntu...
-  service "procps" do
-    action :nothing
-  end
+sysctl "kernel.shmmax" do
+  value node['atoms']['postgresql']['shmmax']
+end
 
-  template "/etc/sysctl.d/90-postgresql.conf" do
-    source "90-postgresql.conf.sysctl.erb"
-    owner "root"
-    mode  "0644"
-    variables(node['atoms']['postgresql'].to_hash)
-    notifies :start, 'service[procps]', :immediately
-  end
-else
-  # hope this works...
-  execute "sysctl" do
-    command "/sbin/sysctl -p /etc/sysctl.conf"
-    action :nothing
-  end
-
-  bash "add shm settings" do
-    user "root"
-    code <<-EOF
-      echo 'kernel.shmmax = #{node['atoms']['postgresql']['shmmax']}' >> /etc/sysctl.conf
-      echo 'kernel.shmall = #{node['atoms']['postgresql']['shmall']}' >> /etc/sysctl.conf
-    EOF
-    notifies :run, 'execute[sysctl]', :immediately
-    not_if "egrep '^kernel.shmmax = ' /etc/sysctl.conf"
-  end
+sysctl "kernel.shmall" do
+  value node['atoms']['postgresql']['shmall']
 end
 
 execute "/opt/atoms/embedded/bin/initdb -D #{postgresql_data_dir} -E UTF8" do
