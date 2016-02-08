@@ -29,6 +29,6 @@ end
 
 execute "initialize keycloak-server database" do
   # just a dummy command - TODO create keyclock tables at installation time
-  command "/sbin/sysctl -e -p /etc/sysctl.conf"
+  cwd "#{install_dir}/embedded/apps/atoms/initdb/bin"
   action :nothing
 end
