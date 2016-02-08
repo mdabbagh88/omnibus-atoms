@@ -2,13 +2,8 @@
 
 ## Installation
 
-- [Package downloads page](http://atomsd.org/downlods.html)
-- [Atoms Installation](atoms-installation.md)
-
-## Maintenance
-
-- [Get service status](maintenance/README.md#get-service-status)
-- [Starting and stopping](maintenance/README.md#starting-and-stopping)
+- [Installation Instructions](atoms-installation.md)
+- [Downloads page](http://atomsd.org/downloads.html)
 
 ## Configuring
 
@@ -19,6 +14,11 @@
 - [Backups](settings/backups.md)
 - [Logs](settings/logs.md)
 - [Only start atoms-ctl services after a given filesystem is mounted](settings/configuration.md#)
+
+## Maintenance
+
+- [Get service status](maintenance/README.md#get-service-status)
+- [Starting and stopping](maintenance/README.md#starting-and-stopping)
 
 ## Updating
 
