@@ -1,24 +1,24 @@
 Atoms Server Omnibus
 ==================================
-This project creates full-stack platform-specific packages for `atoms-server`.
+This project creates full-stack platform-specific packages for `atoms`.
 
 Download Binaries
 ------------
-Please follow the steps on the [downloads page](https://github.com/atomsd/atoms/wiki/Atoms-Installation)
+Please follow the steps on the [downloads page](http://atomsd.org/downloads.html)
 
 Preperation 
 ------------
 only when runing under non root user.
 
 ```shell
-sudo mkdir -p /opt/atoms-server /var/cache/omnibus
+sudo mkdir -p /opt/atoms /var/cache/omnibus
 sudo chown USER:USER /opt/atoms
 sudo chown USER:USER /var/cache/omnibus
 ```
 
 Installation
 ------------
-You must have a sane Ruby 1.9+ environment with Bundler installed. Ensure all
+You must have a sane Ruby 2.2+ environment with Bundler installed. Ensure all
 the required gems are installed:
 
 ```shell
@@ -38,7 +38,7 @@ Usage
 You create a platform-specific package using the `build project` command:
 
 ```shell
-$ bin/omnibus build atoms-server
+$ bin/omnibus build atoms
 ```
 
 The platform/architecture type of the package created will match the platform
@@ -52,15 +52,15 @@ You can clean up all temporary files generated during the build process with
 the `clean` command:
 
 ```shell
-$ bin/omnibus clean atoms-server
+$ bin/omnibus clean atoms
 ```
 
 Adding the `--purge` purge option removes __ALL__ files generated during the
-build including the project install directory (`/opt/atoms-server`) and
+build including the project install directory (`/opt/atoms`) and
 the package cache directory (`/var/cache/omnibus/pkg`):
 
 ```shell
-$ bin/omnibus clean atoms-server --purge
+$ bin/omnibus clean atoms --purge
 ```
 
 ### Publish
@@ -112,10 +112,10 @@ section:
 
 ```shell
 $ bundle exec kitchen login ubuntu-1204
-[vagrant@ubuntu...] $ cd atoms-server
+[vagrant@ubuntu...] $ cd atoms
 [vagrant@ubuntu...] $ bundle install
 [vagrant@ubuntu...] $ ...
-[vagrant@ubuntu...] $ bin/omnibus build atoms-server
+[vagrant@ubuntu...] $ bin/omnibus build atoms
 ```
 
 For a complete list of all commands and platforms, run `kitchen list` or
