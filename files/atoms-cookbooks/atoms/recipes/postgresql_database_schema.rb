@@ -30,5 +30,6 @@ end
 execute "initialize keycloak-server database" do
   # just a dummy command - TODO create keyclock tables at installation time
   cwd "#{install_dir}/embedded/apps/atoms/initdb/bin"
+  command "echo TODO - create keyclock db at installation time #{database_name}"
   action :nothing
 end
