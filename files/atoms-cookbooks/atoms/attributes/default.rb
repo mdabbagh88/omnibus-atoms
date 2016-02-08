@@ -75,7 +75,7 @@ default['atoms']['atoms-server']['db_sslmode'] = nil
 default['atoms']['atoms-server']['db_sslrootcert'] = nil
 
 default['atoms']['atoms-server']['inst_verification'] = false
-default['atoms']['atoms-server']['inst_verification_class'] = "org.jboss.aerogear.atoms.service.sms.ClickatellSMSSender"
+default['atoms']['atoms-server']['inst_verification_class'] = "org.jboss.aerogear.unifiedpush.service.sms.ClickatellSMSSender"
 default['atoms']['atoms-server']['inst_verification_properties'] = []
 # Example - Additinal properties will be passed into verification class`
 # ['aerogear.config.sms.sender.clickatell.api_id=','aerogear.config.sms.sender.clickatell.username=','aerogear.config.sms.sender.clickatell.password=','aerogear.config.sms.sender.clickatell.encoding=UTF-8','aerogear.config.sms.sender.clickatell.template={0}']
@@ -106,6 +106,10 @@ default['atoms']['postgresql']['md5_auth_cidr_addresses'] = []
 default['atoms']['postgresql']['trust_auth_cidr_addresses'] = ['localhost']
 default['atoms']['postgresql']['shmmax'] = kernel['machine'] =~ /x86_64/ ? 17179869184 : 4294967295
 default['atoms']['postgresql']['shmall'] = kernel['machine'] =~ /x86_64/ ? 4194304 : 1048575
+default['atoms']['postgresql']['semmsl'] = 250
+default['atoms']['postgresql']['semmns'] = 32000
+default['atoms']['postgresql']['semopm'] = 32
+default['atoms']['postgresql']['semmni'] = ((node['atoms']['postgresql']['max_connections'].to_i / 16) + 250)
 
 # Resolves CHEF-3889
 if (node['memory']['total'].to_i / 4) > ((node['atoms']['postgresql']['shmmax'].to_i / 1024) - 2097152)
