@@ -2,7 +2,8 @@
 
 ## Installation
 
-- [Package downloads page](https://github.com/atomsd/atoms/wiki/Atoms-Installation)
+- [Package downloads page](http://atomsd.org/downlods.html)
+- [Atoms Installation](atoms-installation.md)
 
 ## Maintenance
 
@@ -28,6 +29,6 @@
 - [Atoms is unreachable in my browser](common_installation_problems/README.md#atoms-is-unreachable-in-my-browser).
 - ['pg_dump: aborting because of server version mismatch'](settings/database.md#using-a-non-packaged-postgresql-database-management-server)
 
-## Omnibus Unifiedpus developer documentation
+## Omnibus Atoms developer documentation
 
 - [Building your own package](build/README.md)
