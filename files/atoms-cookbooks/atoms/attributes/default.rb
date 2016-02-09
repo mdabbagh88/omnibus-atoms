@@ -103,7 +103,7 @@ default['atoms']['postgresql']['port'] = 5432
 default['atoms']['postgresql']['listen_address'] = 'localhost'
 default['atoms']['postgresql']['max_connections'] = 200
 default['atoms']['postgresql']['md5_auth_cidr_addresses'] = []
-default['atoms']['postgresql']['trust_auth_cidr_addresses'] = ['localhost']
+default['atoms']['postgresql']['trust_auth_cidr_addresses'] = ['localhost','127.0.0.1/32']
 default['atoms']['postgresql']['shmmax'] = kernel['machine'] =~ /x86_64/ ? 17179869184 : 4294967295
 default['atoms']['postgresql']['shmall'] = kernel['machine'] =~ /x86_64/ ? 4194304 : 1048575
 default['atoms']['postgresql']['semmsl'] = 250
