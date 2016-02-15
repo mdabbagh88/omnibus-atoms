@@ -3,12 +3,13 @@
 ## Installation
 
 - [Installation Instructions](atoms-installation.md)
-- [Downloads page](http://atomsd.org/downloads.html)
+- [Downloads page](http://atomsd.org/downloads)
 
 ## Maintenance
 
 - [Get service status](maintenance/README.md#get-service-status)
 - [Starting and stopping](maintenance/README.md#starting-and-stopping)
+
 ## Configuring
 
 - [Configuring the external url](settings/configuration.md#configuring-the-external-url-for-gitlab)
