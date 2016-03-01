@@ -28,7 +28,7 @@ On Centos 6 and 7, the commands below will also open HTTP and SSH access in the 
 Your Atoms instance should reachable over HTTP at the IP or hostname of your server. You can login as an admin user with **username:** admin and **password:** 123.
 
 ### Configuration Options 
-See [Configuration Options](settings/atoms-configuration-options.md)
+See [Configuration Options](settings/configuration.md)
 
 ## Operating Systems
 ### Supported Unix distributions
