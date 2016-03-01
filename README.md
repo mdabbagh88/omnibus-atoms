@@ -4,7 +4,7 @@ This project creates full-stack platform-specific packages for `atoms`.
 
 Download Binaries
 ------------
-Please follow the steps on the [downloads page](http://atomsd.org/downloads.html)
+Please follow the steps on the [downloads page](http://atomsd.org/downloads)
 
 Preperation 
 ------------
