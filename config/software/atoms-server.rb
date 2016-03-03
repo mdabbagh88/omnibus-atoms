@@ -16,7 +16,7 @@
 #
 
 name "atoms"
-default_version "1.1.1-SNAPSHOT"
+default_version "1.1.2-SNAPSHOT"
 
 dependency "ruby"
 dependency "bundler"
