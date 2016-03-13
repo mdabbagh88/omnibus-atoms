@@ -67,8 +67,8 @@ default['atoms']['atoms-server']['db_pool'] = 10
 # db_username, db_host, db_port oveeride PostgreSQL properties [sql_user, listen_address, port]
 default['atoms']['atoms-server']['db_username'] = "atoms_server"
 default['atoms']['atoms-server']['db_password'] = nil
-# Path to postgresql socket directory
-default['atoms']['atoms-server']['db_host'] = "/var/opt/atoms/postgresql"
+# Postgresql host over TCP connection, java jdbc does not support unix socket.
+default['atoms']['atoms-server']['db_host'] = "localhost"
 default['atoms']['atoms-server']['db_port'] = 5432
 default['atoms']['atoms-server']['db_socket'] = nil
 default['atoms']['atoms-server']['db_sslmode'] = nil

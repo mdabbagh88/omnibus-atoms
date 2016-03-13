@@ -45,8 +45,8 @@ external_url 'GENERATED_EXTERNAL_URL'
 ## db_username, db_host, db_port oveeride PostgreSQL properties [sql_user, listen_address, port]
 # atoms_server['db_username'] = "atoms_server"
 # atoms_server['db_password'] = nil
-## Path to postgresql socket directory
-# atoms_server['db_host'] = "/var/opt/atoms/postgresql"
+## Postgresql host over TCP connection, java jdbc does not support unix socket.
+# atoms_server['db_host'] = "localhost"
 # atoms_server['db_port'] = 5432
 # atoms_server['db_socket'] = nil
 # atoms_server['db_sslmode'] = nil
