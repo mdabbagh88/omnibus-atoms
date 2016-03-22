@@ -44,12 +44,7 @@ nginx_config = File.join(nginx_conf_dir, "nginx.conf")
 atoms_server_http_conf = File.join(nginx_conf_dir, "atoms-http.conf")
 
 # If the service is enabled, check if we are using internal nginx
-atoms_server_enabled = if node['atoms']['atoms-server']['enable']
-                               node['atoms']['nginx']['enable']
-                             else
-                               false
-                             end
-
+atoms_server_enabled = node['atoms']['nginx']['enable']
 
 # Include the config file for atoms-server in nginx.conf later
 nginx_vars = node['atoms']['nginx'].to_hash.merge({
