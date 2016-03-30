@@ -7,15 +7,15 @@ build="$(date '+%s')-$$"
 bundle install
 
 # Do the build and capture its output in a .log file
-make do_release 2>&1 | tee -a /tmp/${build}.log
+make do_release 2>&1 | tee -a ${build}.log
 
 # Check the exit status of `make`, not `tee`
 if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
-  subject="unififedpush-server build ${build} SUCCESS"
+  subject="omnibus-atoms build ${build} SUCCESS"
 else
-  subject="unififedpush-serverbuild ${build} FAIL"
+  subject="omnibus-atoms build ${build} FAIL"
 fi
 
 # We assume that email to the current system user will somehow reach the right
 # human eyes
-tail -n 20 /tmp/${build}.log | sed 's/.*\r//' | mail -s "${subject}" $(cat ~/.forward)
+# tail -n 20 ${build}.log | sed 's/.*\r//' | mail -s "${subject}" $(cat ~/.forward)

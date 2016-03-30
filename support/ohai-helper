@@ -21,7 +21,7 @@ def repo_string
       version = 'trusty'
     end
   when 'debian', 'raspbian'
-    os = 'debian'
+    os = ohai['platform']
     case ohai['platform_version']
     when /^7\./
       version = 'wheezy'
@@ -35,6 +35,14 @@ def repo_string
       version = '6'
     when /^7\./
       version = '7'
+    end
+  when 'fedora'
+    os = 'fedora'
+    case ohai['platform_version']
+    when /^22/
+      version = '22'
+    when /^23/
+      version = '23'
     end
   end
 

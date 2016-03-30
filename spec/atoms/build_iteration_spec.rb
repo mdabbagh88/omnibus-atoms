@@ -54,3 +54,4 @@ describe Atoms::BuildIteration do
     end
   end
 end
+
