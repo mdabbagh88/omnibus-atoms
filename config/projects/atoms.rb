@@ -28,6 +28,12 @@ install_dir "#{default_root}/atoms"
 build_version   Omnibus::BuildVersion.new.semver
 build_iteration Atoms::BuildIteration.new.build_iteration
 
+override :ruby, version: '2.2.2', source: { md5: '326e99ddc75381c7b50c85f7089f3260' }
+override :rubygems, version: '2.5.2'
+override :'chef-gem', version: '12.6.0'
+override :cacerts, version: '2016.01.20', source: { md5: '36eee0e80373937dd90a9a334ae42817' }
+override :postgresql, version: '9.4.1', source: { md5: '2cf30f50099ff1109d0aa517408f8eff' }
+
 # Creates required build directories
 dependency "preparation"
 
@@ -35,7 +41,7 @@ dependency "preparation"
 dependency "postgresql"
 dependency "nginx"
 dependency "omnibus-ctl"
-dependency "chef"
+dependency "chef-gem"
 dependency "logrotate"
 dependency "runit"
 

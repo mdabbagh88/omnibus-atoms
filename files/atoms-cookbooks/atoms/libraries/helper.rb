@@ -17,11 +17,18 @@
 
 require 'mixlib/shellout'
 
+
 module ShellOutHelper
 
   def do_shell_out(cmd)
     o = Mixlib::ShellOut.new(cmd)
     o.run_command
+    o
+  rescue Errno::EACCES
+    Chef::Log.info("Cannot execute #{cmd}.")
+    o
+  rescue Errno::ENOENT
+    Chef::Log.info("#{cmd} does not exist.")
     o
   end
 
@@ -32,7 +39,7 @@ module ShellOutHelper
 
   def failure?(cmd)
     o = do_shell_out(cmd)
-    o.exitstatus == 3
+    o.exitstatus != 0
   end
 end
 
@@ -103,6 +110,9 @@ class OmnibusHelper
     failure?("/opt/atoms/bin/atoms-ctl status #{service_name}")
   end
 
+  def self.user_exists?(username)
+    success?("id -u #{username}")
+  end
 end
 
 class SecretsHelper
@@ -192,5 +202,18 @@ class RedhatHelper
   # https://github.com/chef/ohai/blob/31f6415c853f3070b0399ac2eb09094eb81939d2/lib/ohai/plugins/linux/platform.rb#L27
   def self.get_redhatish_version(contents)
     contents[/Rawhide/i] ? contents[/((\d+) \(Rawhide\))/i, 1].downcase : contents[/release ([\d\.]+)/, 1]
+  end
+end
+
+class VersionHelper
+  extend ShellOutHelper
+
+  def self.version(cmd)
+    result = do_shell_out(cmd)
+    if result.exitstatus == 0
+      result.stdout
+    else
+      nil
+    end
   end
 end
