@@ -48,7 +48,7 @@ no_changes:
 	# git diff --quiet HEAD
 
 on_tag:
-	git describe --exact-match
+	git describe
 
 purge:
 	# Force a new download of Curl's certificate bundle because it gets updated
