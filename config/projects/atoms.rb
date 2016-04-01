@@ -33,7 +33,6 @@ override :rubygems, version: '2.5.2'
 override :'chef-gem', version: '12.6.0'
 override :cacerts, version: '2016.01.20', source: { md5: '36eee0e80373937dd90a9a334ae42817' }
 override :postgresql, version: '9.4.1', source: { md5: '2cf30f50099ff1109d0aa517408f8eff' }
-override :'pkg-config-lite', version: '0.28-1', source: { md5: '0103b909e19ca9c6497a7ae696c16480' }
 
 
 # Creates required build directories
