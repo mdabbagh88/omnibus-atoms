@@ -16,7 +16,7 @@
 #
 
 name "atoms"
-default_version "1.1.3-SNAPSHOT"
+default_version "1.1.3-FINAL"
 
 dependency "ruby"
 dependency "bundler"
@@ -24,8 +24,8 @@ dependency "rsync"
 dependency "postgresql"
 dependency "wildfly"
 
-version "1.1.3-SNAPSHOT" do
-  source md5: "dbc2a9d701dcf32621ab195e978e1719"
+version "1.1.3-FINAL" do
+  source md5: "2a949240812dcb239b292e17ae39d86f"
 end
 
 repo_home = if "#{version}".end_with?("SNAPSHOT") then "libs-snapshot-local" else "libs-release-local" end

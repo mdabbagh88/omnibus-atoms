@@ -19,8 +19,8 @@ On Centos 6 and 7, the commands below will also open HTTP and SSH access in the 
 ### Add the Atoms package server and install the package
 
 #### CentOS/RHEL/Fedora
-    curl -LJO http://packages.atomsd.org/release/el/7/atoms-1.1.2-Final.0.el7.x86_64.rpm  
-    sudo rpm -i atoms-1.1.2-Final.0.el7.x86_64.rpm  
+    curl -LJO http://packages.atomsd.org/release/el/7/atoms-1.1.3-Final.0.el7.x86_64.rpm  
+    sudo rpm -i atoms-1.1.3-Final.0.el7.x86_64.rpm  
 
 ## Configure and start Atoms Server
     sudo atoms-ctl reconfigure
